@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#22333B">
+  <title>Digital Law Finder | ตรวจสอบกฎหมายธุรกิจดิจิทัล</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = { theme: { extend: { colors: {
+      legal: { bg:'#F2F4F3', dark:'#22333B', ink:'#0A0908', accent:'#5E503F', khaki:'#A9927D', surface:'#FFFFFF' }
+    }, fontFamily: { sans:['Prompt','sans-serif'] } } } };
+  </script>
+  <style>
+    :root{--bg:#F2F4F3;--dark:#22333B;--ink:#0A0908;--accent:#5E503F;--khaki:#A9927D;--surface:#fff}
+    *{scroll-behavior:smooth} body{font-family:'Prompt',sans-serif;background:var(--bg);color:var(--ink)}
+    .nav-link{color:#e9e5df;padding:.65rem .85rem;border-radius:.65rem;font-size:.9rem;white-space:nowrap}
+    .nav-link:hover,.nav-link.active{background:#5E503F;color:white}
+    .legal-card{background:#fff;border:1px solid #A9927D;border-radius:1rem;box-shadow:0 5px 18px #22333b0c}
+    .btn-primary{background:#5E503F;color:#fff;border:1px solid #5E503F}
+    .btn-primary:hover{background:#A9927D;border-color:#A9927D;color:#0A0908}
+    .btn-outline{border:1px solid #A9927D;color:#5E503F;background:white}
+    .btn-outline:hover{background:#A9927D;color:#0A0908}
+    .field{width:100%;border:1px solid #A9927D;border-radius:.7rem;padding:.75rem .9rem;background:#fff;outline:none}
+    .field:focus{box-shadow:0 0 0 3px #A9927D55;border-color:#5E503F}
+    .tag{background:#eee8e1;color:#5E503F;border:1px solid #A9927D;border-radius:999px;padding:.2rem .65rem;font-size:.75rem}
+    .section{scroll-margin-top:100px}.hidden-view{display:none!important}
+    .prose-small li{margin:.3rem 0}.prose-small ul{list-style:disc;padding-left:1.2rem}
+    @media print{nav,.no-print,#home,.print-hide{display:none!important}body{background:#fff}.legal-card{box-shadow:none;break-inside:avoid}main{padding:0!important}.print-only{display:block!important}}
+    .print-only{display:none}
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="bg-legal-dark sticky top-0 z-50 shadow-lg no-print">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+      <a href="#home" class="flex items-center gap-2 text-white min-w-0">
+        <span class="w-10 h-10 rounded-xl bg-legal-khaki text-legal-dark grid place-items-center shrink-0"><i data-lucide="scale" class="w-6 h-6"></i></span>
+        <span class="font-semibold leading-tight">Digital Law Finder<small class="block text-xs text-stone-300 font-light">กฎหมายธุรกิจดิจิทัล</small></span>
+      </a>
+      <div class="hidden md:flex items-center gap-1">
+        <a class="nav-link active" href="#home">หน้าแรก</a><a class="nav-link" href="#scenarios">เลือกสถานการณ์</a>
+        <a class="nav-link" href="#search">ระบบสืบค้น</a><a class="nav-link" href="#saved">บันทึกผลการสืบค้น</a>
+      </div>
+      <button id="mobileMenuBtn" class="md:hidden text-white p-2" aria-label="เปิดเมนู"><i data-lucide="menu"></i></button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden px-4 pb-3 flex flex-col">
+      <a class="nav-link" href="#home">หน้าแรก</a><a class="nav-link" href="#scenarios">เลือกสถานการณ์</a>
+      <a class="nav-link" href="#search">ระบบสืบค้น</a><a class="nav-link" href="#saved">บันทึกผลการสืบค้น</a>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Home / Dashboard -->
+    <section id="home" class="section py-12 md:py-20">
+      <div class="grid lg:grid-cols-[1.2fr_.8fr] gap-10 items-center">
+        <div>
+          <span class="tag inline-flex items-center gap-2 mb-5"><i data-lucide="shield-check" class="w-4 h-4"></i> DIGITAL BUSINESS LEGAL CHECKLIST</span>
+          <h1 class="text-4xl md:text-6xl font-semibold text-legal-dark leading-tight">Digital Law<br><span class="text-legal-accent">Finder</span></h1>
+          <p class="mt-5 text-lg md:text-xl text-stone-700 leading-relaxed max-w-2xl">เครื่องมือช่วยผู้ประกอบการร้านค้าออนไลน์ในประเทศไทยคัดกรองประเด็นกฎหมายที่อาจเกี่ยวข้องกับกิจกรรมทางธุรกิจ พร้อมแนวทางปฏิบัติเบื้องต้นและแหล่งอ้างอิงทางการที่ตรวจสอบต่อได้</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#scenarios" class="btn-primary rounded-xl px-6 py-3 font-medium inline-flex items-center gap-2">เริ่มต้นตรวจสอบกฎหมายธุรกิจ <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <a href="#search" class="btn-outline rounded-xl px-6 py-3 font-medium">ค้นหาประเด็นกฎหมาย</a>
+          </div>
+          <p class="mt-5 text-xs text-stone-500">ใช้งานในเบราว์เซอร์ได้ทันที · ไม่ต้องติดตั้งเซิร์ฟเวอร์ · บันทึกข้อมูลไว้ในอุปกรณ์นี้</p>
+        </div>
+        <div class="legal-card p-7 md:p-9">
+          <div class="flex items-center justify-between"><div class="w-14 h-14 rounded-2xl bg-legal-dark text-white grid place-items-center"><i data-lucide="landmark" class="w-8 h-8"></i></div><span class="tag">LEGAL OVERVIEW</span></div>
+          <h2 class="text-2xl font-semibold mt-6 text-legal-dark">ตรวจสอบอย่างเป็นระบบ</h2>
+          <div class="space-y-4 mt-6">
+            <div class="flex gap-3"><i data-lucide="check-circle-2" class="text-legal-accent shrink-0 mt-1"></i><div><b>เลือกกิจกรรมธุรกิจ</b><p class="text-sm text-stone-600">เริ่มจากสถานการณ์ที่ร้านค้ากำลังดำเนินการ</p></div></div>
+            <div class="flex gap-3"><i data-lucide="search-check" class="text-legal-accent shrink-0 mt-1"></i><div><b>สำรวจข้อกฎหมาย</b><p class="text-sm text-stone-600">ดูประเด็น มาตรา แนวปฏิบัติ และความเสี่ยง</p></div></div>
+            <div class="flex gap-3"><i data-lucide="file-check-2" class="text-legal-accent shrink-0 mt-1"></i><div><b>บันทึกผลและพิมพ์รายงาน</b><p class="text-sm text-stone-600">จัดเก็บสรุปไว้ใน localStorage ของเบราว์เซอร์</p></div></div>
+          </div>
+          <div class="mt-7 p-4 rounded-xl bg-legal-bg border border-legal-khaki text-sm text-stone-700">ข้อมูลนี้เป็นเครื่องมือคัดกรองเบื้องต้น ไม่ใช่คำปรึกษากฎหมายเฉพาะกรณี และไม่ทดแทนการตรวจสอบกฎหมายฉบับปัจจุบัน</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scenario picker -->
+    <section id="scenarios" class="section py-12">
+      <div class="mb-7"><p class="text-sm font-medium text-legal-accent">01 / BUSINESS SCENARIOS</p><h2 class="text-3xl font-semibold text-legal-dark mt-2">เลือกสถานการณ์ธุรกิจของคุณ</h2><p class="text-stone-600 mt-2">เลือกการดำเนินงานที่ต้องการตรวจสอบ ระบบจะนำไปแสดงประเด็นกฎหมายที่เกี่ยวข้องทันที</p></div>
+      <div id="scenarioGrid" class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4"></div>
+    </section>
+
+    <!-- Search -->
+    <section id="search" class="section py-12">
+      <div class="mb-7"><p class="text-sm font-medium text-legal-accent">02 / LAW SEARCH & ISSUES</p><h2 class="text-3xl font-semibold text-legal-dark mt-2">ระบบสืบค้นและประเด็นกฎหมาย</h2><p class="text-stone-600 mt-2">ค้นด้วยคำสำคัญ หรือกรองตามหมวดกฎหมายเพื่อสำรวจประเด็นเพิ่มเติม</p></div>
+      <div class="legal-card p-4 md:p-6 mb-6">
+        <div class="grid md:grid-cols-[1fr_260px_auto] gap-3">
+          <label class="relative"><span class="sr-only">ค้นหากฎหมาย</span><i data-lucide="search" class="absolute left-3 top-3.5 w-5 h-5 text-stone-400"></i><input id="searchInput" class="field pl-11" placeholder="ค้นหา เช่น ข้อมูลส่วนบุคคล, โฆษณา, ภาษี, ลิขสิทธิ์"></label>
+          <select id="categoryFilter" class="field"><option value="all">ทุกหมวดกฎหมาย</option><option value="privacy">ข้อมูลส่วนบุคคล</option><option value="consumer">ผู้บริโภคและโฆษณา</option><option value="commerce">ธุรกรรมอิเล็กทรอนิกส์และภาษี</option><option value="copyright">ทรัพย์สินทางปัญญา</option><option value="computer">คอมพิวเตอร์</option></select>
+          <button id="clearSearch" class="btn-outline rounded-xl px-5 py-2">ล้างตัวกรอง</button>
+        </div>
+        <div class="mt-4"><p class="text-sm font-medium text-legal-dark mb-2">คำค้นแนะนำ</p><div id="keywordChips" class="flex flex-wrap gap-2"></div></div>
+      </div>
+      <div class="flex items-center justify-between gap-3 mb-4"><h3 id="resultsHeading" class="text-xl font-semibold text-legal-dark">ประเด็นกฎหมายทั้งหมด</h3><span id="resultCount" class="tag">0 รายการ</span></div>
+      <div id="issuesList" class="grid lg:grid-cols-2 gap-5"></div>
+      <div id="emptyState" class="hidden-view legal-card p-10 text-center text-stone-600">ไม่พบประเด็นที่ตรงกับคำค้น ลองใช้คำอื่นหรือเปลี่ยนหมวดกฎหมาย</div>
+    </section>
+
+    <!-- Saved findings -->
+    <section id="saved" class="section py-12">
+      <div class="mb-7"><p class="text-sm font-medium text-legal-accent">03 / FINDINGS & SUMMARY LOG</p><h2 class="text-3xl font-semibold text-legal-dark mt-2">บันทึกและสรุปผลการสืบค้น</h2><p class="text-stone-600 mt-2">บันทึกผลการตรวจสอบไว้ในเบราว์เซอร์เครื่องนี้ และเรียกดูหรือพิมพ์รายงานภายหลังได้</p></div>
+      <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-6 items-start">
+        <form id="findingForm" class="legal-card p-5 md:p-6">
+          <input type="hidden" id="editId">
+          <h3 class="text-xl font-semibold text-legal-dark mb-5">แบบฟอร์มสรุปผล</h3>
+          <label class="block text-sm font-medium mb-2" for="findingTitle">ชื่อสถานการณ์ / หัวข้อธุรกิจที่ตรวจสอบ *</label>
+          <input id="findingTitle" class="field mb-4" required placeholder="เช่น การเก็บข้อมูลลูกค้าเพื่อทำระบบสมาชิก">
+          <label class="block text-sm font-medium mb-2" for="findingDetails">ข้อค้นพบทางกฎหมาย (Findings) *</label>
+          <textarea id="findingDetails" class="field mb-4" rows="4" required placeholder="สรุปกฎหมาย มาตรา และประเด็นที่พบ"></textarea>
+          <label class="block text-sm font-medium mb-2" for="findingRefs">หลักฐาน / แหล่งอ้างอิงที่ตรวจสอบ (References)</label>
+          <textarea id="findingRefs" class="field mb-4" rows="3" placeholder="ชื่อกฎหมาย ลิงก์ราชกิจจานุเบกษา หรือหน่วยงานทางการ"></textarea>
+          <label class="block text-sm font-medium mb-2" for="findingActions">ข้อควรระวังและแนวทางปฏิบัติ (Precautions & Action Plan)</label>
+          <textarea id="findingActions" class="field mb-5" rows="3" placeholder="สิ่งที่ต้องทำ ผู้รับผิดชอบ และกำหนดเวลา"></textarea>
+          <div class="flex flex-wrap gap-2"><button class="btn-primary rounded-xl px-5 py-3 font-medium" type="submit"><i data-lucide="save" class="w-4 h-4 inline mr-1"></i><span id="saveBtnText">บันทึกผลการตรวจสอบ</span></button><button type="button" id="resetForm" class="btn-outline rounded-xl px-5 py-3">ล้างแบบฟอร์ม</button></div>
+          <p id="formMessage" class="text-sm mt-3 text-legal-accent" role="status"></p>
+        </form>
+        <div>
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4"><h3 class="text-xl font-semibold text-legal-dark">รายการที่บันทึกไว้</h3><button id="printAll" class="btn-primary rounded-xl px-4 py-2 text-sm"><i data-lucide="printer" class="w-4 h-4 inline mr-1"></i>Export / พิมพ์รายงาน PDF</button></div>
+          <div id="savedList" class="space-y-4"></div>
+          <div id="noSaved" class="legal-card p-8 text-center text-stone-500">ยังไม่มีรายการบันทึก เลือกประเด็นกฎหมายแล้วกด “นำข้อมูลนี้ไปบันทึกสรุปผล”</div>
+          <p class="text-xs text-stone-500 mt-3">หมายเหตุ: ข้อมูลจัดเก็บด้วย localStorage เฉพาะเบราว์เซอร์และอุปกรณ์นี้ ควรส่งออก/พิมพ์หรือสำรองข้อมูลก่อนล้างข้อมูลเว็บไซต์หรือเปลี่ยนอุปกรณ์</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-legal-dark text-stone-200 mt-12 py-8">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-4"><div><div class="font-semibold text-white">Digital Law Finder</div><p class="text-sm text-stone-300 mt-1">เครื่องมือคัดกรองประเด็นกฎหมายสำหรับธุรกิจดิจิทัลไทย</p></div><p class="text-xs text-stone-400 max-w-xl">พัฒนาเพื่อการศึกษาและการตรวจสอบเบื้องต้น ไม่ใช่คำแนะนำทางกฎหมาย การใช้กฎหมายขึ้นอยู่กับข้อเท็จจริงและประกาศ/กฎลำดับรองที่ใช้บังคับ ควรตรวจสอบฉบับล่าสุดจากหน่วยงานทางการ</p></div>
+  </footer>
+
+<script>
+/* ฐานข้อมูลตัวอย่าง: ประเด็นสรุปเพื่อการคัดกรอง ไม่ใช่การแสดงเนื้อหากฎหมายฉบับเต็ม */
+const issues = [
+ {id:'pdpa',category:'privacy',scenario:'privacy',title:'พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA)',short:'การเก็บ ใช้ หรือเปิดเผยข้อมูลลูกค้าเพื่อสมัครสมาชิก ทำการตลาด และให้บริการ',sections:'มาตรา 19 (ความยินยอม), 21 (จำกัดวัตถุประสงค์), 23 (แจ้งรายละเอียด), 24 (ฐานการประมวลผล), 30 (สิทธิขอเข้าถึง), 37 (หน้าที่ผู้ควบคุมข้อมูลส่วนบุคคล)',dos:['กำหนดวัตถุประสงค์และฐานกฎหมายให้ชัดเจนก่อนเก็บข้อมูล ไม่ใช้ความยินยอมเป็นฐานโดยอัตโนมัติทุกกรณี','แจ้ง Privacy Notice ให้ครบ เช่น ประเภทข้อมูล วัตถุประสงค์ ระยะเวลาเก็บ ผู้รับข้อมูล และสิทธิของเจ้าของข้อมูล','เก็บข้อมูลเท่าที่จำเป็น กำหนดระยะเวลาลบ/ทำลาย และจำกัดสิทธิ์ผู้เข้าถึง','จัดให้มีช่องทางรับคำขอใช้สิทธิและกระบวนการจัดการเหตุละเมิดข้อมูล'],donts:['ห้ามนำข้อมูลไปใช้เกินวัตถุประสงค์ที่แจ้งไว้โดยไม่มีฐานกฎหมายรองรับ','อย่าถือว่าการกดยอมรับเงื่อนไขรวม ๆ เป็นความยินยอมที่ถูกต้องเสมอไป','อย่าส่งข้อมูลลูกค้าให้แพลตฟอร์มหรือคู่ค้าโดยไม่ประเมินบทบาทและฐานการเปิดเผย'],keywords:['PDPA','ข้อมูลลูกค้า','ระบบสมาชิก','ความยินยอม','Privacy Notice','ฐานกฎหมาย'],refs:[['สำนักงานคณะกรรมการคุ้มครองข้อมูลส่วนบุคคล (สคส.)','https://www.pdpc.or.th'],['ราชกิจจานุเบกษา','https://ratchakitcha.soc.go.th']]},
+ {id:'consumer',category:'consumer',scenario:'ads',title:'พระราชบัญญัติคุ้มครองผู้บริโภค พ.ศ. 2522',short:'การโฆษณา รีวิวสินค้า การไลฟ์สด และการแสดงราคา/คุณสมบัติสินค้า',sections:'มาตรา 22 (ข้อความโฆษณาต้องไม่เป็นเท็จหรือเกินจริง หรือก่อให้เกิดความเข้าใจผิดในสาระสำคัญ), 23–29 (การควบคุมโฆษณาและการดำเนินการที่เกี่ยวข้อง)',dos:['แสดงราคา เงื่อนไข โปรโมชัน ข้อจำกัด และค่าใช้จ่ายเพิ่มเติมให้ชัดเจน','ตรวจสอบหลักฐานรองรับคำกล่าวอ้าง เช่น ผลลัพธ์ คุณภาพ ประสิทธิภาพ และคำรับรองจากผู้ใช้','เปิดเผยความสัมพันธ์หรือผลประโยชน์เมื่อรีวิว/รับจ้างโฆษณา เพื่อไม่ทำให้ผู้บริโภคเข้าใจผิด','เก็บสำเนาโฆษณา สคริปต์ไลฟ์ และหลักฐานอนุมัติข้อความ'],donts:['ห้ามใช้ข้อความเท็จ เกินจริง หรือทำให้เข้าใจผิดในสาระสำคัญ','อย่าสร้างรีวิวปลอม ซื้อรีวิวโดยแสดงเป็นประสบการณ์จริง หรือปกปิดเงื่อนไขสำคัญ','อย่าใช้ภาพก่อน-หลังหรือคำรับรองผลลัพธ์โดยไม่มีหลักฐานที่เหมาะสม'],keywords:['โฆษณา','รีวิวสินค้า','ไลฟ์สด','ข้อความเกินจริง','ราคา','โปรโมชัน'],refs:[['สำนักงานคณะกรรมการคุ้มครองผู้บริโภค (สคบ.)','https://www.ocpb.go.th'],['ราชกิจจานุเบกษา','https://ratchakitcha.soc.go.th']]},
+ {id:'computer',category:'computer',scenario:'ads',title:'พระราชบัญญัติว่าด้วยการกระทำความผิดเกี่ยวกับคอมพิวเตอร์ พ.ศ. 2550 และที่แก้ไขเพิ่มเติม',short:'ความเสี่ยงจากการนำเข้าหรือเผยแพร่ข้อมูลคอมพิวเตอร์ที่เข้าข่ายความผิดตามกฎหมาย',sections:'มาตรา 14 (การนำเข้าข้อมูลคอมพิวเตอร์ตามลักษณะที่กฎหมายกำหนด เช่น ข้อมูลเท็จบางประเภทโดยทุจริต/หลอกลวงและก่อความเสียหายแก่ประชาชน), 16 (ภาพของผู้อื่นที่ถูกสร้าง/ตัดต่อ/เติม/ดัดแปลงในลักษณะที่อาจทำให้เสียชื่อเสียง ถูกดูหมิ่น เกลียดชัง หรืออับอาย)',dos:['ตรวจสอบแหล่งที่มาและความถูกต้องของข้อมูลก่อนเผยแพร่','มีขั้นตอนตรวจทานคอนเทนต์ ภาพ และสื่อที่สร้างหรือดัดแปลง','เก็บบันทึกการอนุมัติและหลักฐานที่มาของสื่อโฆษณา'],donts:['อย่าเข้าใจว่าข้อความโฆษณาที่ผิดทุกกรณีเป็นความผิดตาม พ.ร.บ.คอมพิวเตอร์ฯ มาตรา 14 ต้องพิจารณาองค์ประกอบความผิด','ห้ามนำภาพบุคคลมาตัดต่อในลักษณะที่เข้าองค์ประกอบมาตรา 16','อย่าเผยแพร่ข้อมูลเท็จโดยทุจริตหรือหลอกลวงที่เข้าองค์ประกอบตามกฎหมาย'],keywords:['พ.ร.บ.คอมพิวเตอร์','ข้อมูลเท็จ','ภาพตัดต่อ','โพสต์ออนไลน์','เผยแพร่ข้อมูล'],refs:[['กระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม','https://www.mdes.go.th'],['ราชกิจจานุเบกษา','https://ratchakitcha.soc.go.th']]},
+ {id:'electronic',category:'commerce',scenario:'commerce',title:'พระราชบัญญัติว่าด้วยธุรกรรมทางอิเล็กทรอนิกส์ พ.ศ. 2544',short:'การทำสัญญา คำเสนอซื้อขาย การยืนยันคำสั่งซื้อ และหลักฐานอิเล็กทรอนิกส์',sections:'มาตรา 7 (ห้ามปฏิเสธผลทางกฎหมายเพียงเพราะข้อมูลอยู่ในรูปข้อมูลอิเล็กทรอนิกส์), 8 (การทำเป็นหนังสือ), 9 (ลายมือชื่อ), 13 (คำเสนอ/คำสนองในการทำสัญญา)',dos:['แสดงรายละเอียดสินค้า ราคา วิธีชำระเงิน ค่าจัดส่ง การคืนสินค้า และขั้นตอนยืนยันคำสั่งซื้อ','จัดเก็บหลักฐานคำสั่งซื้อ การชำระเงิน การยืนยัน และการสื่อสารในรูปแบบที่เรียกดูได้','ออกแบบขั้นตอนให้ลูกค้าตรวจสอบและแก้ไขข้อมูลก่อนยืนยันรายการ'],donts:['อย่าลบหรือแก้ไขหลักฐานธุรกรรมโดยไม่มีระบบตรวจสอบย้อนหลัง','อย่าถือว่าข้อความออนไลน์ทุกชนิดเป็นลายมือชื่ออิเล็กทรอนิกส์ที่สมบูรณ์โดยไม่พิจารณาความน่าเชื่อถือและเจตนา'],keywords:['ธุรกรรมอิเล็กทรอนิกส์','คำสั่งซื้อ','สัญญาออนไลน์','หลักฐานชำระเงิน','e-Commerce'],refs:[['สำนักงานพัฒนาธุรกรรมทางอิเล็กทรอนิกส์ (ETDA)','https://www.etda.or.th'],['ราชกิจจานุเบกษา','https://ratchakitcha.soc.go.th']]},
+ {id:'tax',category:'commerce',scenario:'commerce',title:'ประมวลรัษฎากรและกฎหมาย/หลักเกณฑ์ภาษีที่เกี่ยวข้องกับ e-Commerce และ e-Payment',short:'ภาษีเงินได้ ภาษีมูลค่าเพิ่ม การออกใบกำกับภาษี และข้อมูลธุรกรรมผ่านผู้ให้บริการชำระเงิน',sections:'ประมวลรัษฎากร มาตรา 40 (ประเภทเงินได้), 50 (การหักภาษี ณ ที่จ่ายในกรณีที่กำหนด), 77/2 (การประกอบกิจการที่อยู่ในบังคับ VAT), 81 (กิจการที่ได้รับยกเว้น VAT), 86/4 (รายการในใบกำกับภาษีเต็มรูป); รวมถึงหลักเกณฑ์การนำส่งข้อมูลธุรกรรมลักษณะเฉพาะตามมาตรา 3 สัตตรส (เมื่อเข้าเงื่อนไข)',dos:['จัดทำบัญชีรายรับรายจ่ายและเก็บเอกสารคำสั่งซื้อ การรับเงิน ค่าธรรมเนียม และการคืนเงิน','ประเมินหน้าที่ภาษีเงินได้และ VAT ตามรูปแบบกิจการและรายรับ; โดยทั่วไปผู้ประกอบการที่มีรายรับเกิน 1.8 ล้านบาทต่อปีต้องพิจารณาจด VAT เว้นแต่เข้าข้อยกเว้น','ออกใบเสร็จ/ใบกำกับภาษีให้ถูกประเภทและครบรายการเมื่อมีหน้าที่','ตรวจสอบข้อมูลการรับเงินผ่านธนาคารหรือผู้ให้บริการ e-Payment และหน้าที่รายงานตามเกณฑ์ที่ใช้บังคับ'],donts:['อย่าสับสนระหว่างเกณฑ์รายงานข้อมูล e-Payment กับเกณฑ์เสียภาษีหรือจด VAT เพราะเป็นคนละหน้าที่','อย่าแยกรายรับหรือใช้บัญชีหลายบัญชีเพื่อหลีกเลี่ยงหน้าที่ภาษี','อย่าออกใบกำกับภาษีมูลค่าเพิ่มหากยังไม่มีสิทธิหรือไม่ได้จดทะเบียน VAT'],keywords:['ภาษี e-Commerce','e-Payment','VAT','1.8 ล้านบาท','ใบกำกับภาษี','ภาษีเงินได้'],refs:[['กรมสรรพากร','https://www.rd.go.th'],['ระบบ e-Filing กรมสรรพากร','https://efiling.rd.go.th']]},
+ {id:'copyright',category:'copyright',scenario:'copyright',title:'พระราชบัญญัติลิขสิทธิ์ พ.ศ. 2537 และที่แก้ไขเพิ่มเติม',short:'การนำภาพถ่าย เพลง วิดีโอ งานกราฟิก และข้อความของบุคคลอื่นมาใช้ทางการค้า',sections:'มาตรา 15 (สิทธิแต่ผู้เดียวของเจ้าของลิขสิทธิ์), 27 (การละเมิดลิขสิทธิ์โดยตรงในงานทั่วไป), 31 (การกระทำแก่ผลงานที่รู้อยู่แล้วว่าได้ทำขึ้นโดยละเมิดลิขสิทธิ์เพื่อหากำไร)',dos:['ใช้ผลงานที่สร้างเอง ได้รับอนุญาต หรือมีสัญญา/ใบอนุญาตครอบคลุมการใช้เชิงพาณิชย์','ตรวจสอบขอบเขตสิทธิ เช่น ช่องทาง ระยะเวลา พื้นที่ การดัดแปลง และสิทธิใช้เพลงประกอบ','เก็บหลักฐานการอนุญาต ใบเสร็จ และเงื่อนไขไลเซนส์ให้ตรวจสอบได้'],donts:['อย่าคิดว่าภาพหรือเพลงที่ค้นพบได้บนอินเทอร์เน็ตเป็นสาธารณสมบัติ','การให้เครดิตเจ้าของผลงานไม่ได้ทำให้การใช้ที่ต้องขออนุญาตกลายเป็นชอบด้วยกฎหมายโดยอัตโนมัติ','อย่านำเพลงจากแพลตฟอร์มหนึ่งไปใช้ในโฆษณาอีกแพลตฟอร์มโดยไม่ตรวจสอบสิทธิ'],keywords:['ลิขสิทธิ์','รูปภาพสินค้า','เพลงประกอบ','คอนเทนต์','ภาพถ่าย','ไลเซนส์'],refs:[['กรมทรัพย์สินทางปัญญา','https://www.ipthailand.go.th'],['ราชกิจจานุเบกษา','https://ratchakitcha.soc.go.th']]}
+];
+const scenarios=[
+ {id:'privacy',icon:'users',title:'เก็บข้อมูลลูกค้าและระบบสมาชิก',desc:'สมัครสมาชิก เก็บชื่อ เบอร์โทร ที่อยู่ ประวัติซื้อ และทำการตลาด',laws:['PDPA'],color:'ข้อมูลส่วนบุคคล'},
+ {id:'ads',icon:'megaphone',title:'ยิงแอด รีวิว และไลฟ์สดขายของ',desc:'ทำโฆษณา รีวิวสินค้า ไลฟ์สด โปรโมชัน และคอนเทนต์ขายสินค้า',laws:['คุ้มครองผู้บริโภค','คอมพิวเตอร์ฯ'],color:'โฆษณาและผู้บริโภค'},
+ {id:'commerce',icon:'shopping-cart',title:'ขายออนไลน์ ใบเสร็จ และภาษี',desc:'รับคำสั่งซื้อ ชำระเงิน ออกเอกสาร และจัดการภาษี e-Commerce',laws:['ธุรกรรมอิเล็กทรอนิกส์','ภาษี e-Commerce'],color:'ธุรกรรมและภาษี'},
+ {id:'copyright',icon:'copyright',title:'ใช้ภาพ เพลง หรือคอนเทนต์ผู้อื่น',desc:'นำรูป เพลง วิดีโอ ฟอนต์ หรือกราฟิกมาใช้โปรโมตร้าน',laws:['ลิขสิทธิ์'],color:'ทรัพย์สินทางปัญญา'}
+];
+const categoryNames={privacy:'ข้อมูลส่วนบุคคล',consumer:'ผู้บริโภคและโฆษณา',commerce:'ธุรกรรมอิเล็กทรอนิกส์และภาษี',copyright:'ทรัพย์สินทางปัญญา',computer:'คอมพิวเตอร์'};
+let activeScenario='all';
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function renderScenarios(){
+ $('scenarioGrid').innerHTML=scenarios.map(s=>`<button data-scenario="${s.id}" class="legal-card text-left p-5 hover:-translate-y-1 transition group"><div class="flex justify-between items-start"><span class="w-12 h-12 rounded-xl bg-legal-dark text-white grid place-items-center"><i data-lucide="${s.icon}" class="w-6 h-6"></i></span><i data-lucide="arrow-up-right" class="w-5 h-5 text-legal-khaki"></i></div><span class="tag inline-block mt-4">${s.color}</span><h3 class="font-semibold text-lg text-legal-dark mt-3">${s.title}</h3><p class="text-sm text-stone-600 mt-2 leading-relaxed">${s.desc}</p><p class="text-xs text-legal-accent mt-4">เกี่ยวข้องกับ: ${s.laws.join(' · ')}</p></button>`).join('');
+ document.querySelectorAll('[data-scenario]').forEach(b=>b.addEventListener('click',()=>{activeScenario=b.dataset.scenario;$('categoryFilter').value='all';$('searchInput').value='';renderIssues();$('search').scrollIntoView({behavior:'smooth'});}));
+ lucide.createIcons();
+}
+function renderKeywords(){
+ const words=[...new Set(issues.flatMap(i=>i.keywords))];
+ $('keywordChips').innerHTML=words.map(w=>`<button class="tag hover:bg-legal-khaki" data-keyword="${esc(w)}">${esc(w)}</button>`).join('');
+ document.querySelectorAll('[data-keyword]').forEach(b=>b.addEventListener('click',()=>{$('searchInput').value=b.dataset.keyword;renderIssues();}));
+}
+function issueCard(i){
+ return `<article class="legal-card p-5 md:p-6 flex flex-col" id="issue-${i.id}">
+ <div class="flex flex-wrap items-center gap-2 mb-3"><span class="tag">${esc(categoryNames[i.category])}</span>${i.scenario!=='all'?'<span class="text-xs text-stone-500">สถานการณ์ที่เกี่ยวข้อง</span>':''}</div>
+ <h3 class="text-lg font-semibold text-legal-dark">${esc(i.title)}</h3><p class="text-sm text-stone-600 mt-2">${esc(i.short)}</p>
+ <div class="mt-4 p-4 rounded-xl bg-legal-bg"><p class="font-medium text-sm text-legal-dark mb-1">มาตราที่เกี่ยวข้องโดยสังเขป</p><p class="text-sm text-stone-700">${esc(i.sections)}</p></div>
+ <div class="grid sm:grid-cols-2 gap-4 mt-4 prose-small text-sm"><div><h4 class="font-semibold text-green-900 flex gap-2 items-center"><i data-lucide="check-circle" class="w-4 h-4"></i> สิ่งที่ควรทำ (Do's)</h4><ul class="mt-2 text-stone-700">${i.dos.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div><div><h4 class="font-semibold text-red-900 flex gap-2 items-center"><i data-lucide="alert-triangle" class="w-4 h-4"></i> ข้อห้าม / ความเสี่ยง (Don'ts)</h4><ul class="mt-2 text-stone-700">${i.donts.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div></div>
+ <div class="mt-5 pt-4 border-t border-legal-khaki"><p class="text-xs font-semibold text-legal-dark mb-2">แหล่งอ้างอิงทางการ (ตรวจสอบฉบับปัจจุบัน)</p><div class="flex flex-wrap gap-x-4 gap-y-2">${i.refs.map(r=>`<a class="text-sm text-legal-accent underline underline-offset-2 hover:text-legal-dark" href="${r[1]}" target="_blank" rel="noopener noreferrer">${esc(r[0])} ↗</a>`).join('')}</div>
+ <button data-add="${i.id}" class="btn-primary rounded-xl px-4 py-2.5 text-sm font-medium mt-4 w-full sm:w-auto"><i data-lucide="file-plus-2" class="w-4 h-4 inline mr-1"></i>นำข้อมูลนี้ไปบันทึกสรุปผล</button></div></article>`;
+}
+function renderIssues(){
+ const q=$('searchInput').value.trim().toLocaleLowerCase('th'),cat=$('categoryFilter').value;
+ const filtered=issues.filter(i=>(activeScenario==='all'||i.scenario===activeScenario)&&(cat==='all'||i.category===cat)&&(!q||[i.title,i.short,i.sections,...i.keywords,...i.dos,...i.donts].join(' ').toLocaleLowerCase('th').includes(q)));
+ $('issuesList').innerHTML=filtered.map(issueCard).join('');$('resultCount').textContent=`${filtered.length} รายการ`;
+ $('resultsHeading').textContent=activeScenario==='all'?'ประเด็นกฎหมายทั้งหมด':`ประเด็นสำหรับ: ${scenarios.find(s=>s.id===activeScenario)?.title||''}`;
+ $('emptyState').classList.toggle('hidden-view',filtered.length!==0);
+ document.querySelectorAll('[data-add]').forEach(b=>b.addEventListener('click',()=>prefillFinding(b.dataset.add)));
+ lucide.createIcons();
+}
+function prefillFinding(id){
+ const i=issues.find(x=>x.id===id);if(!i)return;
+ $('editId').value='';$('findingTitle').value=i.title;
+ $('findingDetails').value=`${i.short}\n\nมาตราที่เกี่ยวข้อง: ${i.sections}\n\nสิ่งที่ควรทำ:\n- ${i.dos.join('\n- ')}\n\nข้อห้าม/ความเสี่ยง:\n- ${i.donts.join('\n- ')}`;
+ $('findingRefs').value=i.refs.map(r=>`${r[0]}: ${r[1]}`).join('\n');
+ $('findingActions').value='ตรวจสอบข้อเท็จจริงและกฎหมายฉบับปัจจุบันให้ตรงกับรูปแบบกิจการของร้าน จากนั้นกำหนดผู้รับผิดชอบและวันดำเนินการ';
+ $('formMessage').textContent='นำข้อมูลประเด็นกฎหมายมาเติมในแบบฟอร์มแล้ว โปรดตรวจทานและปรับให้ตรงกับกิจการก่อนบันทึก';
+ $('saved').scrollIntoView({behavior:'smooth'});
+}
+const STORAGE_KEY='digitalLawFinder.findings.v1';
+function getSaved(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]')}catch(e){return []}}
+function setSaved(data){localStorage.setItem(STORAGE_KEY,JSON.stringify(data))}
+function renderSaved(){
+ const data=getSaved();$('noSaved').classList.toggle('hidden-view',data.length>0);
+ $('savedList').innerHTML=data.map(x=>`<article class="legal-card p-5"><div class="flex flex-wrap justify-between gap-2"><div><h4 class="font-semibold text-legal-dark">${esc(x.title)}</h4><p class="text-xs text-stone-500 mt-1">บันทึกเมื่อ ${new Date(x.updated).toLocaleString('th-TH')}</p></div><span class="tag">บันทึกแล้ว</span></div><div class="mt-3 space-y-2 text-sm"><div><b>ข้อค้นพบ</b><p class="text-stone-700 whitespace-pre-wrap">${esc(x.details)}</p></div>${x.refs?`<div><b>แหล่งอ้างอิง</b><p class="text-stone-700 whitespace-pre-wrap break-words">${esc(x.refs)}</p></div>`:''}${x.actions?`<div><b>ข้อควรระวังและแผนปฏิบัติ</b><p class="text-stone-700 whitespace-pre-wrap">${esc(x.actions)}</p></div>`:''}</div><div class="flex flex-wrap gap-2 mt-4 no-print"><button data-edit="${x.id}" class="btn-outline rounded-lg px-3 py-2 text-sm">แก้ไข</button><button data-print="${x.id}" class="btn-outline rounded-lg px-3 py-2 text-sm">พิมพ์รายการนี้</button><button data-delete="${x.id}" class="rounded-lg border border-red-300 text-red-800 px-3 py-2 text-sm hover:bg-red-50">ลบรายการ</button></div></article>`).join('');
+ document.querySelectorAll('[data-delete]').forEach(b=>b.addEventListener('click',()=>{if(confirm('ยืนยันลบรายการนี้หรือไม่?')){setSaved(getSaved().filter(x=>x.id!==b.dataset.delete));renderSaved();}}));
+ document.querySelectorAll('[data-edit]').forEach(b=>b.addEventListener('click',()=>{const x=getSaved().find(v=>v.id===b.dataset.edit);if(!x)return;$('editId').value=x.id;$('findingTitle').value=x.title;$('findingDetails').value=x.details;$('findingRefs').value=x.refs;$('findingActions').value=x.actions;$('saveBtnText').textContent='บันทึกการแก้ไข';$('saved').scrollIntoView({behavior:'smooth'});}));
+ document.querySelectorAll('[data-print]').forEach(b=>b.addEventListener('click',()=>printReport(getSaved().filter(x=>x.id===b.dataset.print))));
+}
+function resetForm(){$('findingForm').reset();$('editId').value='';$('saveBtnText').textContent='บันทึกผลการตรวจสอบ';$('formMessage').textContent='';}
+$('findingForm').addEventListener('submit',e=>{e.preventDefault();const data=getSaved(),id=$('editId').value;const item={id:id||String(Date.now()),title:$('findingTitle').value.trim(),details:$('findingDetails').value.trim(),refs:$('findingRefs').value.trim(),actions:$('findingActions').value.trim(),updated:new Date().toISOString()};if(id){const idx=data.findIndex(x=>x.id===id);if(idx>=0)data[idx]=item;else data.unshift(item)}else data.unshift(item);try{setSaved(data);resetForm();$('formMessage').textContent='บันทึกข้อมูลเรียบร้อยแล้ว';renderSaved()}catch(err){$('formMessage').textContent='บันทึกไม่สำเร็จ: พื้นที่จัดเก็บของเบราว์เซอร์อาจเต็มหรือถูกปิดใช้งาน'}});
+$('resetForm').addEventListener('click',resetForm);
+function printReport(rows){
+ if(!rows.length)return;
+ const w=window.open('','_blank');if(!w){alert('เบราว์เซอร์บล็อกหน้าต่างพิมพ์ โปรดอนุญาต pop-up แล้วลองอีกครั้ง');return}
+ w.document.write(`<!doctype html><html lang="th"><head><meta charset="utf-8"><title>รายงาน Digital Law Finder</title><link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet"><style>body{font-family:Prompt,sans-serif;color:#0A0908;margin:32px;line-height:1.65}h1{color:#22333B}h2{font-size:18px;color:#5E503F;margin-bottom:4px}.item{border:1px solid #A9927D;border-radius:10px;padding:18px;margin:18px 0;break-inside:avoid}.label{font-weight:600;margin-top:12px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;margin:3px 0}.meta{font-size:12px;color:#666}@media print{button{display:none}}</style></head><body><h1>Digital Law Finder</h1><p>รายงานสรุปผลการตรวจสอบประเด็นกฎหมายธุรกิจดิจิทัล</p><p class="meta">พิมพ์เมื่อ ${new Date().toLocaleString('th-TH')}</p>${rows.map(x=>`<section class="item"><h2>${esc(x.title)}</h2><p class="meta">บันทึกเมื่อ ${new Date(x.updated).toLocaleString('th-TH')}</p><div class="label">ข้อค้นพบทางกฎหมาย</div><pre>${esc(x.details)}</pre><div class="label">หลักฐาน / แหล่งอ้างอิง</div><pre>${esc(x.refs||'-')}</pre><div class="label">ข้อควรระวังและแนวทางปฏิบัติ</div><pre>${esc(x.actions||'-')}</pre></section>`).join('')}<script>window.onload=()=>window.print()<\/script></body></html>`);w.document.close();
+}
+$('printAll').addEventListener('click',()=>printReport(getSaved()));
+$('searchInput').addEventListener('input',renderIssues);$('categoryFilter').addEventListener('change',renderIssues);
+$('clearSearch').addEventListener('click',()=>{$('searchInput').value='';$('categoryFilter').value='all';activeScenario='all';renderIssues()});
+$('mobileMenuBtn').addEventListener('click',()=>$('mobileMenu').classList.toggle('hidden'));
+document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>$('mobileMenu').classList.add('hidden')));
+renderScenarios();renderKeywords();renderIssues();renderSaved();lucide.createIcons();
+</script>
+</body>
+</html>
